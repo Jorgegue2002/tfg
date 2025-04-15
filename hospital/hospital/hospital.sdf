@@ -1,0 +1,294 @@
+<?xml version="1.0" ?>
+<sdf version="1.11">
+  <world name="Hospital">
+    <physics name="1ms" type="ignored">
+        <max_step_size>0.001</max_step_size>
+        <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <light type="directional" name="sun">
+        <cast_shadows>false</cast_shadows>
+        <pose>0 0 10 0 0 0</pose>
+        <diffuse>0.8 0.8 0.8 1</diffuse> <!-- Luz blanca(estilo bombilla?) -->
+        <specular>0 0 0 1</specular>
+        <attenuation>
+            <range>1000</range>
+            <constant>1</constant>
+            <linear>0</linear>
+            <quadratic>0</quadratic>
+        </attenuation>
+        <direction>0 0 -1</direction> <!-- En veritcal hacia abajo -->
+    </light>
+
+
+    <model name="ground_plane">
+        <static>true</static>
+        <link name="link">
+            <collision name="collision">
+            <geometry>
+                <plane>
+                <normal>0 0 1</normal>
+                </plane>
+            </geometry>
+            </collision>
+            <visual name="visual">
+            <geometry>
+                <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+                </plane>
+            </geometry>
+            <material>
+                <ambient>0.8 0.8 0.8 1</ambient>
+                <diffuse>0.8 0.8 0.8 1</diffuse>
+                <specular>0.8 0.8 0.8 1</specular>
+            </material>
+            </visual>
+        </link>
+    </model>
+
+    <model name="aws_robomaker_hospital_floor_01_floor_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_floor</uri>
+        <static>true</static>
+        <pose>-0.001425 -0.014447 0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_hospital_floor_01_walls_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_floor_01_walls</uri>
+        <static>true</static>
+        <pose>-0.013823 -0.013783 0 0 -0 0</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_hospital_nursesstation_01_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_nursesstation_01</uri>
+        <static>true</static>
+        <pose>0 1.5 0 0 -0 0</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_hospital_elevator_01_door_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_elevator_01_door</uri>
+        <static>true</static>
+        <pose>-1.51 19.35 0.19 0 -0 0</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_elevator_01_portal_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_elevator_01_portal</uri>
+        <static>true</static>
+        <pose>-1.50654 19.4813 0.19 0 -0 0</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_elevator_01_portal_2">
+      <include>
+        <uri>model://aws_robomaker_hospital_elevator_01_portal</uri>
+        <static>true</static>
+        <pose>1.51134 19.487 0.19 0 -0 0</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_elevator_01_car_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_elevator_01_car</uri>
+        <static>true</static>
+        <pose>-1.49587 19.35 0.19 0 -0 0</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_hospital_ramp_01_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_ramp_01</uri>
+        <static>true</static>
+        <pose>-1.70996 16.3685 0 0 -0 0</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_hospital_curtain_half_open_01_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>-11.0216 -13.8069 0 0 -0 1.55358</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_curtain_closed_01_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>-11.022 -7.27757 0 0 -0 1.57907</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_curtain_half_open_01_2">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>11.1417 -21.4039 0 0 0 -1.55117</pose>
+      </include>
+    </model>
+    <!-- 
+    <model name="aws_robomaker_hospital_curtain_half_open_01_3">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>11.1068 -17.8472 0 0 0 -1.55117</pose>
+      </include>
+    </model>
+    -->
+    <model name="aws_robomaker_hospital_curtain_half_open_01_4">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>11.1374 -14.1551 0 0 0 -1.55117</pose>
+      </include>
+    </model>
+    <!-- 
+    <model name="aws_robomaker_hospital_curtain_half_open_01_5">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>-11.0332 -17.61 0 0 -0 1.55358</pose>
+      </include>
+    </model>
+    -->
+    <model name="aws_robomaker_hospital_curtain_half_open_01_6">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>-11.0086 -21.7566 0 0 -0 1.55358</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_curtain_half_open_01_7">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>-11.0426 0.066126 0 0 -0 1.56614</pose>
+      </include>
+    </model>
+    <!-- 
+    <model name="aws_robomaker_hospital_curtain_half_open_01_8">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
+        <static>true</static>
+        <pose>-11.0309 -3.75145 0 0 -0 1.56614</pose>
+      </include>
+    </model>
+    -->
+    <model name="aws_robomaker_hospital_curtain_open_01_1">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_open_01</uri>
+        <static>true</static>
+        <pose>11.0051 -6.91002 0 0 0 -1.58737</pose>
+      </include>
+    </model>
+    <!-- 
+    <model name="aws_robomaker_hospital_curtain_closed_01_2">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>11.0303 -3.70124 0 0 0 -1.58306</pose>
+      </include>
+    </model>
+    -->
+    <model name="aws_robomaker_hospital_curtain_closed_01_3">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>10.9586 0.159483 0 0 0 -1.58306</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_curtain_closed_01_4">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>10.9819 -26.2149 0 0 0 -1.58306</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_hospital_curtain_closed_01_5">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>1.31506 -30.5771 0 0 -0 3.1401</pose>
+      </include>
+    </model>
+    <!-- 
+    <model name="aws_robomaker_hospital_curtain_closed_01_6">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>5.49659 -30.5364 0 0 -0 3.1401</pose>
+      </include>
+    </model>
+    -->
+    <model name="aws_robomaker_hospital_curtain_closed_01_7">
+      <include>
+        <uri>model://aws_robomaker_hospital_curtain_closed_01</uri>
+        <static>true</static>
+        <pose>9.80048 -30.5918 0 0 -0 3.1401</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_residential_CoffeeTable_01_1">
+      <include>
+        <uri>model://aws_robomaker_residential_CoffeeTable_01</uri>
+        <static>true</static>
+        <pose>-10.2383 -29.9144 0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_residential_Sofa_01_1">
+      <include>
+        <uri>model://aws_robomaker_residential_Sofa_01</uri>
+        <static>true</static>
+        <pose>-11.077 -30.5544 -1e-05 2.6e-05 -3e-06 1.56984</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_residential_SofaB_01_1">
+      <include>
+        <uri>model://aws_robomaker_residential_SofaB_01</uri>
+        <static>true</static>
+        <pose>-10.8238 -28.6662 -5e-06 -1.3e-05 -2e-06 -1.56116</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_residential_SofaB_01_2">
+      <include>
+        <uri>model://aws_robomaker_residential_SofaB_01</uri>
+        <static>true</static>
+        <pose>-9.73697 -28.6538 -3e-06 1.3e-05 -4e-06 -1.56077</pose>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_residential_Trash_01_1">
+      <include>
+        <uri>model://aws_robomaker_residential_Trash_01</uri>
+        <static>true</static>
+        <pose>0.316178 -6.58235 0.000903 0 -2e-06 0</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_residential_Trash_01_2">
+      <include>
+        <uri>model://aws_robomaker_residential_Trash_01</uri>
+        <static>true</static>
+        <pose>-0.436645 -6.57758 0.000903 -1e-06 -1e-06 0</pose>
+      </include>
+    </model>
+    <model name="aws_robomaker_residential_Trash_01_3">
+      <include>
+        <uri>model://aws_robomaker_residential_Trash_01</uri>
+        <static>true</static>
+        <pose>-12.1773 -27.6293 0.000894 -1e-06 -1e-06 0</pose>
+      </include>
+    </model>
+
+
+  </world>
+</sdf>
