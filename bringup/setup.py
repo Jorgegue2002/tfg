@@ -15,8 +15,11 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
 
-        #Launch del mundo
+        #Launch
         (os.path.join('share', package_name, 'launch'), glob('launch/*')),
+
+
+        (os.path.join('share', 'create3_sim', 'irobot_create_common'), glob('irobot_create_common/*')),
     ],
     
     install_requires=[

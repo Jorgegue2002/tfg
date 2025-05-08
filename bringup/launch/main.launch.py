@@ -14,9 +14,12 @@ ARGUMENTS = [
                           choices=['true', 'false'], description='Start rviz.'),
 ]
 
-for pose_element in ['x', 'y', 'z', 'yaw']:
-    ARGUMENTS.append(DeclareLaunchArgument(pose_element, default_value='0.0',
-                     description=f'{pose_element} component of the robot pose.'))
+for pose_element, default in zip(['x', 'y', 'z', 'yaw'], ['0', '1', '0', '0']):
+    ARGUMENTS.append(DeclareLaunchArgument(
+        pose_element,
+        default_value=default,
+        description=f'{pose_element} component of the robot pose.'
+    ))
 
 
 def generate_launch_description():
@@ -31,7 +34,7 @@ def generate_launch_description():
     mundo_launch = PathJoinSubstitution(
         [pkg_hospital, 'launch', 'mundo.launch.py'])
     robot_spawn_launch = PathJoinSubstitution(
-        [pkg_irobot_create_gz_bringup, 'launch', 'create3_spawn.launch.py'])
+        [pkg_irobot_create_gz_bringup, 'launch', 'create3_gz.launch.py'])
 
     ignition = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([mundo_launch]),
