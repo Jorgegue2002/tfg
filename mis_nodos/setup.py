@@ -26,6 +26,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            # Se define el nombre que se va usar de cada nodo
+            'entregador = create3_nav.entregador:main',
         ],
     },
 )
