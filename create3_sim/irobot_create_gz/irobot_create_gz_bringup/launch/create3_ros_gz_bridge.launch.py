@@ -190,6 +190,29 @@ def generate_launch_description():
         ]
     )
 
+ # Lidar bridge
+    lidar_bridge = Node(
+             package='ros_gz_bridge', executable='parameter_bridge',
+             name='lidar_bridge',
+             output='screen',
+             parameters=[{
+                 'use_sim_time': use_sim_time,
+                 'lazy': True
+             }],
+             arguments=[
+                 ['/world/', world,
+                  '/model/', robot_name,
+                  '/link/lidar_link/sensor/lidar_sensor/scan'
+                  '@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan']
+             ],
+             remappings=[
+                 (['/world/', world,
+                     '/model/', robot_name,
+                     '/link/lidar_link/sensor/lidar_sensor/scan'],
+                  'lidar/scan')
+                  ])
+
+
     # Create launch description and add actions
     ld = LaunchDescription(ARGUMENTS)
     ld.add_action(cmd_vel_bridge)
@@ -199,4 +222,5 @@ def generate_launch_description():
     ld.add_action(cliff_bridges)
     ld.add_action(ir_bridges)
     ld.add_action(buttons_msg_bridge)
+    ld.add_action(lidar_bridge)
     return ld

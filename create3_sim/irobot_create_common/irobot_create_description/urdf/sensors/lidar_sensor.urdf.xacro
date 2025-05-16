@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="rplidar" params="name gazebo namespace parent_link:=base_link *origin">
+    <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/icreate/common_properties.urdf.xacro"/>
+
+    <xacro:property name="mass"       value="0.17"/>
+    <xacro:property name="length_x"   value="${7.1*cm2m}" />
+    <xacro:property name="length_y"   value="${10*cm2m}" />
+    <xacro:property name="length_z"   value="${6*cm2m}" />
+
+    <xacro:property name="collision_x_offset"       value="${0*cm2m}" />
+    <xacro:property name="collision_y_offset"       value="${1.3*cm2m}" />
+    <xacro:property name="collision_z_offset"       value="${-1.9*cm2m}" />
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="${parent_link}"/>
+      <child link="${name}_link"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <link name="${name}_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://nav2_minimal_tb4_description/meshes/rplidar.dae" scale="1 1 1" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="${collision_x_offset} ${collision_y_offset} ${collision_z_offset}"/>
+        <geometry>
+          <box size="${length_x} ${length_y} ${length_z}"/>
+        </geometry>
+      </collision>
+      <xacro:inertial_cuboid mass="0.17" x="${length_x}" y="${length_y}" z="${length_z}"/>
+    </link>
+
+    <gazebo reference="${name}_link">
+      <sensor name="${name}_sensor" type="gpu_lidar">
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>10.0</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>6.28318530718</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.164</min>
+            <max>20.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="${name}_plugin" filename="gpu_lidar"/>
+      </sensor>
+      <xacro:material_darkgray/>
+    </gazebo>
+
+    <gazebo reference="${name}_joint">
+      <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+  </xacro:macro>
+</robot>
