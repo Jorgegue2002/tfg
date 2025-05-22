@@ -38,6 +38,7 @@
       <sensor name="${name}_sensor" type="gpu_lidar">
         <pose>0 0 0 0 0 0</pose>
         <update_rate>10.0</update_rate>
+        <gz_frame_id>${name}_link</gz_frame_id>
         <ray>
           <scan>
             <horizontal>
@@ -53,7 +54,7 @@
             <resolution>0.01</resolution>
           </range>
         </ray>
-        <plugin name="${name}_plugin" filename="gpu_lidar"/>
+        <!-- <plugin name="${name}_plugin" filename="gpu_lidar"/> -->
       </sensor>
       <xacro:material_darkgray/>
     </gazebo>

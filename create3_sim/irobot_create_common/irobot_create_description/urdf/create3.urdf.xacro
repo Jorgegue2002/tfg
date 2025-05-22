@@ -300,7 +300,7 @@
 
     <gazebo>
       <plugin filename="libgz-sim-sensors-system.so" name="gz::sim::systems::Sensors">
-        <render_engine>ogre</render_engine>
+        <render_engine>ogre2</render_engine>
       </plugin>
     </gazebo>
   </xacro:if>
@@ -308,7 +308,7 @@
   <!-- LIDAR -->
   
   <xacro:rplidar name="lidar" gazebo="$(arg gazebo)" namespace="$(arg namespace)">
-    <origin xyz="0 0 0.15"  rpy="0 0 0"/>
+    <origin xyz="0 0 0.135"  rpy="0 0 0"/>
   </xacro:rplidar>
 
 </robot>

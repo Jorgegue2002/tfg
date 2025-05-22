@@ -10,7 +10,7 @@ def generate_launch_description():
     world_path = PathJoinSubstitution([
         get_package_share_directory('hospital'),
         'worlds',
-        'Hospital.sdf'
+        'hospital.sdf'
     ])
 
     # Incluir el launch oficial de ros_gz_sim para lanzar el mundo
