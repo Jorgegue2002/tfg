@@ -27,7 +27,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'initial_pose_publisher = nav2_create.initial_pose_publisher:main',
         ],
     },
 )

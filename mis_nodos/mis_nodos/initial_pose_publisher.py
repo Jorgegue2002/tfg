@@ -38,8 +38,8 @@ class InitialPosePublisher(Node):
             0,      0,      0,      0,      0,      0.0004
         ]
 
-        # Publica una vez tras 2 segundos para asegurarnos de que AMCL ya esté activo
-        self.create_timer(7.0, self.publish_initial_pose, callback_group=None)
+        # Publica una vez tras x segundos para asegurarnos de que AMCL ya esté activo
+        self.create_timer(10.0, self.publish_initial_pose, callback_group=None)
         self.msg = msg
 
     def publish_initial_pose(self):

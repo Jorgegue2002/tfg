@@ -1,0 +1,13 @@
+twist_mux:
+  ros__parameters:
+    use_stamped: false
+    output_topic: "/cmd_vel"
+    topics:
+      nav2:
+        topic: "/cmd_vel_nav"
+        timeout: 0.5
+        priority: 10
+      teleop_keyboard:
+        topic: "/cmd_vel_teleop"
+        timeout: 0.5
+        priority: 100
