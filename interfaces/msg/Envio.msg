@@ -1,6 +1,6 @@
 # Un mensaje que indica el estado de el envio y su destino (0–9)
 
-string status    # state: “on”, “off”, “waiting_for_order”, “waiting_for_discharge”
+string status    # status: “on”, “off”, “waiting_for_order”, “waiting_for_discharge”
 
 #Se puede hacer asi tambien
 #uint8 state
