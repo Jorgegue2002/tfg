@@ -10,13 +10,13 @@ class Entregador(Node):
     def __init__(self):
         super().__init__('entregador')
 
-        # self.initial_x = 0.0  
-        # self.initial_y = 1.0  
+        # self.initial_x = 0.3  
+        # self.initial_y = -17.0  
 
         self.destinos = { 
             #Para darles coordenadas en el mapa a cada numero
-            0: (0.0, 1.0, 0.0),
-            1: (-4.0, 1.0, 0.0),
+            0: (0.3, -17.0, 3.14),
+            1: (8.0, -5.0, 0.0),
             2: (4.0, 2.0, 0.0)
         }
         self.pub_envio = self.create_publisher(Envio, '/envio', 10)

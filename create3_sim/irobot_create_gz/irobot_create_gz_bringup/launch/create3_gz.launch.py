@@ -21,10 +21,10 @@ ARGUMENTS = [
 
 #Definir la posicion en la que spawneara el robot
 default_pose = {
-    'x': '0.0',
-    'y': '1.0',
+    'x': '0.3',
+    'y': '-17.0',
     'z': '0.0',
-    'yaw': '0'
+    'yaw': '3.14'
 }
 
 for pose_element in ['x', 'y', 'z', 'yaw']:

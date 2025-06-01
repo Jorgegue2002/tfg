@@ -40,7 +40,7 @@ def generate_launch_description():
     )
     map_arg = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(nav_dir, 'maps', 'my_map.yaml'),
+        default_value=os.path.join(nav_dir, 'maps', 'hospital.yaml'),
         description='Full path to map yaml file'
     )
     use_localization_arg = DeclareLaunchArgument(
