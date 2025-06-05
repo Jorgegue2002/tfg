@@ -8,6 +8,12 @@
             <uri>model://aws_robomaker_hospital_curtain_closed_01/meshes/aws_robomaker_hospital_curtain_closed_01_visual.dae</uri>
           </mesh>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Turquoise</name>
+          </script>
+        </material>
       </visual>
       <collision name="collision">
         <geometry>

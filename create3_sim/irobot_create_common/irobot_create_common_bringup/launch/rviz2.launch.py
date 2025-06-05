@@ -13,7 +13,7 @@ def generate_launch_description():
     create_bringup = get_package_share_directory('irobot_create_common_bringup')
 
     # Rviz
-    rviz_config = PathJoinSubstitution([create_bringup, 'rviz', 'irobot_create_view.rviz'])
+    rviz_config = PathJoinSubstitution([create_bringup, 'rviz', 'hospital_create_view.rviz'])
     rviz_logo = PathJoinSubstitution([create_bringup, 'rviz', 'irobot_logo.jpg'])
 
     rviz = Node(

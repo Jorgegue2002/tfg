@@ -27,7 +27,7 @@
     </light>
 
 
-    <model name="ground_plane">
+    <!-- <model name="ground_plane">
         <static>true</static>
         <link name="link">
             <collision name="collision">
@@ -51,7 +51,7 @@
             </material>
             </visual>
         </link>
-    </model>
+    </model> -->
 
     <model name="aws_robomaker_hospital_floor_01_floor_1">
       <include>
@@ -93,13 +93,13 @@
         <pose>-1.50654 19.4813 0.19 0 -0 0</pose>
       </include>
     </model>
-    <model name="aws_robomaker_hospital_elevator_01_portal_2">
+    <!-- <model name="aws_robomaker_hospital_elevator_01_portal_2">
       <include>
         <uri>model://aws_robomaker_hospital_elevator_01_portal</uri>
         <static>true</static>
         <pose>1.51134 19.487 0.19 0 -0 0</pose>
       </include>
-    </model>
+    </model> -->
     <model name="aws_robomaker_hospital_elevator_01_car_1">
       <include>
         <uri>model://aws_robomaker_hospital_elevator_01_car</uri>
@@ -107,7 +107,6 @@
         <pose>-1.49587 19.35 0.19 0 -0 0</pose>
       </include>
     </model>
-
 
     <model name="aws_robomaker_hospital_ramp_01_1">
       <include>
@@ -117,7 +116,7 @@
       </include>
     </model>
 
-
+<!--Cortinas-->
     <model name="aws_robomaker_hospital_curtain_half_open_01_1">
       <include>
         <uri>model://aws_robomaker_hospital_curtain_half_open_01</uri>
@@ -241,6 +240,56 @@
       </include>
     </model>
 
+<!--Camillas-->
+    <!-- Camilla en aws_robomaker_hospital_curtain_half_open_01_1 -->
+    <model name="gurney_1">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>-11.0216 -13.3069 0 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- Camilla en aws_robomaker_hospital_curtain_half_open_01_2 -->
+    <model name="gurney_2">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>11.1417 -21.9039 0 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- Camilla en aws_robomaker_hospital_curtain_half_open_01_4 -->
+    <model name="gurney_3">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>11.1374 -14.6551 0 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- Camilla en aws_robomaker_hospital_curtain_half_open_01_6 -->
+    <model name="gurney_4">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>-11.0086 -21.2566 0 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- Camilla en aws_robomaker_hospital_curtain_half_open_01_7 -->
+    <model name="gurney_5">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>-11.0426 0.566126 0 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- Camilla en aws_robomaker_hospital_curtain_open_01_1 -->
+    <model name="gurney_6">
+      <include>
+        <uri>model://CGMClassic</uri>
+        <pose>11.0051 -7.41002 0 0 0 0</pose>
+      </include>
+    </model>
+
+
 
     <model name="aws_robomaker_residential_CoffeeTable_01_1">
       <include>
@@ -272,8 +321,16 @@
       </include>
     </model>
 
+    <model name="Estanteria">
+      <include>
+        <uri>model://shelf</uri>
+        <static>true</static>
+        <pose>0.5 -20.5 0.05 1.3e-05 -4e-06 -1.56077</pose>
+      </include>
+    </model>
 
-    <model name="aws_robomaker_residential_Trash_01_1">
+
+    <!-- <model name="aws_robomaker_residential_Trash_01_1">
       <include>
         <uri>model://aws_robomaker_residential_Trash_01</uri>
         <static>true</static>
@@ -293,8 +350,142 @@
         <static>true</static>
         <pose>-12.1773 -27.6293 0.000894 -1e-06 -1e-06 0</pose>
       </include>
+    </model> -->
+
+    <!--ACTOR-->
+    <actor name="actor_square">
+    <!-- Skin: apariencia y esqueleto (walk.dae) -->
+    <skin>
+      <filename>
+        https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae
+      </filename>
+      <scale>1.0</scale>
+    </skin>
+
+    <!-- Animación esquelética “walk” -->
+    <animation name="walk">
+      <filename>
+        https://fuel.gazebosim.org/1.0/Mingfei/models/actor/tip/files/meshes/walk.dae
+      </filename>
+      <interpolate_x>true</interpolate_x>
+    </animation>
+
+    <!-- Script que hace que el actor recorra el cuadrado:
+        (-5,-8) → (5,-8) → (5,-24) → (-5,-24) → vuelve a (-5,-8) -->
+    <script>
+      <loop>true</loop>
+      <delay_start>0.0</delay_start>
+      <auto_start>true</auto_start>
+
+      <trajectory id="0" type="walk" tension="0.6">
+        <!-- 1) Tiempo 0 s: posición inicial en (-5, -8), orientación hacia +X (yaw=0) -->
+        <waypoint>
+          <time>0</time>
+          <pose>-5  -8   1.0   0   0   0</pose>
+        </waypoint>
+
+        <!-- 2) Se desplaza 10 m hacia (5, -8) a 1 m/s → t = 10 s, misma orientación (yaw=0) -->
+        <waypoint>
+          <time>10</time>
+          <pose>5   -8   1.0   0   0   0</pose>
+        </waypoint>
+
+        <!-- 3) Gira 90° hacia el sur (-Y) en 0.5 s → t = 10.5 s, yaw = –π/2 -->
+        <waypoint>
+          <time>10.5</time>
+          <pose>5   -8   1.0   0   0   -1.57</pose>
+        </waypoint>
+
+        <!-- 4) Recorre 16 m hacia (5, -24) a 1 m/s → t = 10.5 + 16 = 26.5 s, yaw = –π/2 -->
+        <waypoint>
+          <time>26.5</time>
+          <pose>5   -24  1.0   0   0   -1.57</pose>
+        </waypoint>
+
+        <!-- 5) Gira 90° hacia el oeste (–X) en 0.5 s → t = 27.0 s, yaw = π -->
+        <waypoint>
+          <time>27.0</time>
+          <pose>5   -24  1.0   0   0   3.142</pose>
+        </waypoint>
+
+        <!-- 6) Recorre 10 m hacia (-5, -24) a 1 m/s → t = 27.0 + 10 = 37.0 s, yaw = π -->
+        <waypoint>
+          <time>37.0</time>
+          <pose>-5  -24  1.0   0   0   3.142</pose>
+        </waypoint>
+
+        <!-- 7) Gira 90° hacia el norte (+Y) en 0.5 s → t = 37.5 s, yaw = π/2 -->
+        <waypoint>
+          <time>37.5</time>
+          <pose>-5  -24  1.0   0   0   1.57</pose>
+        </waypoint>
+
+        <!-- 8) Recorre 16 m hacia (-5, -8) a 1 m/s → t = 37.5 + 16 = 53.5 s, yaw = π/2 -->
+        <waypoint>
+          <time>53.5</time>
+          <pose>-5  -8   1.0   0   0   1.57</pose>
+        </waypoint>
+
+        <!-- 9) Gira 90° para volver a yaw = 0 en 0.5 s → t = 54.0 s,
+            quedando idéntico al punto inicial -->
+        <waypoint>
+          <time>54.0</time>
+          <pose>-5  -8   1.0   0   0   0</pose>
+        </waypoint>
+      </trajectory>
+    </script>
+  </actor>
+
+<!--Cajas para limitar el tamaño del hospital-->
+    <model name="box1">
+      <pose>5 -6.5 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 1</ambient> <!-- Color rojo tenue -->
+            <diffuse>0.8 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
     </model>
 
+    <model name="box2">
+      <pose>-5 -6.5 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 1</ambient> <!-- Color rojo tenue -->
+            <diffuse>0.8 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
 
   </world>
 </sdf>

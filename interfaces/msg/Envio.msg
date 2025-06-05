@@ -1,13 +1,12 @@
-# Un mensaje que indica el estado de el envio y su destino (0–9)
+# interfaces/msg/Envio.msg
+# Un mensaje que indica el tipo de envio y su destino (0–9)
 
-string status    # status: “on”, “off”, “waiting_for_order”, “waiting_for_discharge”
+# status puede tomar uno de estos valores:
+# - "deliver"             → ir directamente a un punto para entregar
+# - "pickup_and_deliver"   → primero pasar por el dock (0) a recoger, luego ir a destination
+# - "go_to_dock"           → ir al dock (destino 0) independientemente del destino que venga en el mensaje
+# - "waiting_for_order"    → el robot está en el dock esperando que carguen algo o a recibir una orden
+# - "waiting_for_discharge"→ el robot llegó a destino distinto de 0 y espera que descarguen
 
-#Se puede hacer asi tambien
-#uint8 state
-#uint8 STATE_OFF=0
-#uint8 STATE_ON=1
-#uint8 STATE_WAITING_FOR_ORDER=2
-#uint8 STATE_WAITING_FOR_DISCHARGE=3
-
-
-uint8  destination  # Número de destino del 0 a 9 (El 0 esta reservado para el lugar del dock)
+string status
+uint8  destination   # 0 = dock, 1–9 = otros puntos

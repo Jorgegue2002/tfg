@@ -8,6 +8,12 @@
             <uri>model://aws_robomaker_hospital_floor_01_walls/meshes/aws_robomaker_hospital_floor_01_walls_visual.dae</uri>
           </mesh>
         </geometry>
+        <material>
+          <ambient>0.2 0.3 0.4 1</ambient>
+          <diffuse>0.6 0.8 1.0 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
       </visual>
       <collision name="collision">
         <geometry>

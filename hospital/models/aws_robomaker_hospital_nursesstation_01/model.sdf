@@ -3,11 +3,23 @@
   <model name="aws_robomaker_hospital_nursesstation_01">
     <link name="link">
       <visual name="visual">
-	    <geometry>
+	      <geometry>
           <mesh>
             <uri>model://aws_robomaker_hospital_nursesstation_01/meshes/aws_robomaker_hospital_nursesstation_01_visual.dae</uri>
           </mesh>
         </geometry>
+          <!-- <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material> -->
+          <material>
+            <ambient>0.3 0.2 0.1 1</ambient>
+            <diffuse>0.7 0.5 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
       </visual>
       <collision name="collision">
         <geometry>

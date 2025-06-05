@@ -18,15 +18,15 @@ class InitialPosePublisher(Node):
         msg.header.stamp = self.get_clock().now().to_msg()
 
         # Posición en la que sspawnea el robot
-        msg.pose.pose.position.x = 0.3
-        msg.pose.pose.position.y = -17.0
+        msg.pose.pose.position.x = 0.0
+        msg.pose.pose.position.y = 0.0
         msg.pose.pose.position.z = 0.0
 
         # Rotacion de 180º (Modulo de los cuatro = 1)
         msg.pose.pose.orientation.x = 0.0
         msg.pose.pose.orientation.y = 0.0
-        msg.pose.pose.orientation.z = 1.0
-        msg.pose.pose.orientation.w = 0.0
+        msg.pose.pose.orientation.z = 0.0
+        msg.pose.pose.orientation.w = 1.0
 
         # Covarianza (6×6 aplanada) con confianza alta en posición y orientación
         msg.pose.covariance = [
@@ -44,7 +44,7 @@ class InitialPosePublisher(Node):
 
     def publish_initial_pose(self):
         self.publisher_.publish(self.msg)
-        self.get_logger().info('Publicado initialpose en (0.3,-17.0)')
+        self.get_logger().info('Publicado initialpose')
         self.destroy_node()  # Fin de este nodo tras publicar
 
 def main(args=None):
