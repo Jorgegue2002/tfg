@@ -83,9 +83,9 @@ def generate_launch_description():
         output='screen'
     )
 
-    # mux_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(os.path.join(nav_dir, 'launch', 'twist_mux.launch.py'))
-    # )
+    mux_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(nav_dir, 'launch', 'twist_mux.launch.py'))
+    )
 
     ld = LaunchDescription([
         namespace_arg,
@@ -99,7 +99,7 @@ def generate_launch_description():
         bringup_slam,
         bringup_nav,
         initial_pose_pub,
-        # mux_launch
+        mux_launch
     ])
 
     return ld

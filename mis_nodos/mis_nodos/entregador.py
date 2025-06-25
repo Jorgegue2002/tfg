@@ -27,8 +27,7 @@ class Entregador(Node):
             2: (10.0, -18.0, 0.0),
             3: (4.0, -30.0, 0.0),
             4: (-10.0, -18.0, 0.0),
-            5: (-10.0, -4.0, 0.0),
-            6: (3.0, -15.0, 0)
+            5: (-10.0, -4.0, 0.0)
         }
 
         # Tranformar las coordenadas de Gazebo en las coordenadas del mapa
@@ -179,7 +178,7 @@ class Entregador(Node):
         
     def _timeout_callback(self):
         # Se llama cuando expira el temporizador de espera
-        self.get_logger().info('El temporizador ha expirado. Se publicara /robot_ready automaticamente.')
+        self.get_logger().info('El temporizador ha expirado. Se publicará /robot_ready automáticamente.')
         if self._wait_timer is not None:
             self._wait_timer.cancel()
             self._wait_timer = None
@@ -212,7 +211,7 @@ class Entregador(Node):
             return
 
         siguiente = self.cola.pop(0)
-        self.get_logger().info(f'Procesando siguiente envio en cola: destino {siguiente}')
+        self.get_logger().info(f'Procesando siguiente envío en cola: destino {siguiente}')
 
         self.estado = 'Procesando entrega en cola'
         self.dest = siguiente

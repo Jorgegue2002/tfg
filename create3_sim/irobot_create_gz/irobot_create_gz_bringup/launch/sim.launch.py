@@ -72,7 +72,7 @@ def generate_launch_description():
             'gz_args', [
                 LaunchConfiguration('world'),
                 '.sdf',
-                ' -v 4',
+                ' -v 2',
                 ' --gui-config ',
                 PathJoinSubstitution(
                     [pkg_irobot_create_gz_bringup, 'gui', 'create3', 'gui.config']
